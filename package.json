@@ -1,0 +1,51 @@
+{
+  "name": "@neolution/als-context",
+  "version": "1.0.5",
+  "description": "Provides an easy to use class for using AsyncLocalStorage from 'async_hooks' by nodejs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neolution-ch/als-context"
+  },
+  "license": "MIT",
+  "author": "Neolution",
+  "type": "module",
+  "exports": {
+    "default": "./dist/index.modern.js",
+    "require": "./dist/index.cjs"
+  },
+  "main": "./dist/index.cjs",
+  "unpkg": "./dist/index.umd.js",
+  "module": "./dist/index.module.js",
+  "source": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "shx rm -rf dist && microbundle",
+    "lint": "eslint \"**/*.{ts,tsx}\" --cache --max-warnings 0",
+    "prepack": "yarn build",
+    "start": "microbundle-crl watch --format modern,cjs",
+    "tsc": "tsc",
+    "test": "cross-env DEBUG_PRINT_LIMIT=100 jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@types/node": "^14.14.37",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.5.1",
+    "microbundle": "^0.14.2",
+    "prettier": "^2.5.1",
+    "shx": "^0.3.3",
+    "typescript": "^4.2.3"
+  },
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=13.10.0"
+  }
+}
