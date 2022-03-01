@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.0.1] - 2022-03-01
+
 -   cool new feature
 -   a sdasd asd
 
@@ -21,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   created package :tada: 
 
-[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.0.1...HEAD
+
+[3.0.1]: https://github.com/neolution-ch/als-context/compare/3.0.0...3.0.1
 
 [3.0.0]: https://github.com/neolution-ch/als-context/compare/1.0.0...3.0.0
