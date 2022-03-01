@@ -5,9 +5,6 @@ on:
       versionName:
         description: "Name of version  (ie 5.5.0)"
         required: true
-      versionCode:
-        description: "Version number (50500)"
-        required: true
 jobs:
   createrelease:
     runs-on: ubuntu-latest
@@ -22,7 +19,7 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email noreply@github.com
       - name: Change version number and name
-        run: printf 'ext.version_code = ${{ github.event.inputs.versionCode }}\next.version_name = "${{ github.event.inputs.versionName }}"\n' > app_versions.gradle
+        run: yarn version --no-git-tag-version --no-commit-hook --new-version ${{ github.event.inputs.versionName }}
       - name: Update Changelog
         uses: thomaseizinger/keep-a-changelog-new-release@v1
         with:
@@ -36,13 +33,13 @@ jobs:
           echo "::set-output name=commit::$(git rev-parse HEAD)"
       - name: Push new branch
         run: git push origin release/v${{ github.event.inputs.versionName }}
-      - name: Create pull request into master
+      - name: Create pull request into main
         uses: thomaseizinger/create-pull-request@1.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           head: release/v${{ github.event.inputs.versionName }}
-          base: master
-          title: v${{ github.event.inputs.versionName }} into master
+          base: main
+          title: v${{ github.event.inputs.versionName }} into main
           reviewers: ${{ github.event.issue.user.login }}
           body: |
             Hi!

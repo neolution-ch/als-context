@@ -1,0 +1,45 @@
+name: Create GitHub Release
+on:
+  push:
+    branches: [main]
+jobs:
+  tag_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email noreply@github.com
+      - name: Setup release information
+        #get version name from app_versions.gradle file (5.6.2)
+        run: |
+          PACKAGE_VERSION=$(cat package.json \
+            | grep version \
+            | head -1 \
+            | awk -F: '{ print $2 }' \
+            | sed 's/[",]//g')
+          echo "::set-env name=PACKAGE_VERSION::$PACKAGE_VERSION"
+      - name: Extract release notes
+        id: extract_release_notes
+        uses: ffurrer2/extract-release-notes@v1
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.PACKAGE_VERSION }}
+          release_name: v${{ env.PACKAGE_VERSION }}
+          body: ${{ steps.extract_release_notes.outputs.release_notes }}
+          draft: false
+          prerelease: false
+      # - name: Slack notify
+      #   uses: rtCamp/action-slack-notify@main
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_OVER_APP }}
+      #     SLACK_CHANNEL: #over-app-android
+      #     SLACK_TITLE: 🚨 Version ${{ env.PACKAGE_VERSION }} is being published to Google Play Internal Test
+      #     SLACK_MESSAGE: ${{ steps.extract_release_notes.outputs.release_notes }}
+      #     MSG_MINIMAL: true
