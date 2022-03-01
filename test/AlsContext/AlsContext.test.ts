@@ -6,7 +6,7 @@ interface MyStore {
   counter: number;
 }
 
-describe("AlsContext behaves correctly", () => {
+describe("AlsContext behaves correctly :-)", () => {
   let context = new AlsContext<MyStore>();
 
   afterEach(() => {
