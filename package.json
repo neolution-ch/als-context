@@ -1,6 +1,6 @@
 {
   "name": "@neolution/als-context",
-  "version": "1.0.2",
+  "version": "4.0.2",
   "description": "Provides an easy to use class for using AsyncLocalStorage from 'async_hooks' by nodejs",
   "repository": {
     "type": "git",
