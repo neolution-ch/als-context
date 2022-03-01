@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   made package open source
 -   moved packaged to github
+-   oh i forgot to add this.
 
 ## [1.0.0] - 2022-01-10
 
