@@ -6,8 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [3.0.0] - 2022-03-01
+
 -   made package open source
 -   moved packaged to github
+
 ## [1.0.0] - 2022-01-10
+
 ### Added
+
 -   created package :tada: 
+
+[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.0.0...HEAD
+
+[3.0.0]: https://github.com/neolution-ch/als-context/compare/1.0.0...3.0.0
