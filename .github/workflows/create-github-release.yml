@@ -19,7 +19,7 @@ jobs:
             | head -1 \
             | awk -F: '{ print $2 }' \
             | sed 's/[",]//g')
-          echo ${{ PACKAGE_VERSION }}
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
       - name: Extract release notes
         id: extract_release_notes
         uses: ffurrer2/extract-release-notes@v1
@@ -29,8 +29,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ PACKAGE_VERSION }}
-          release_name: v${{ PACKAGE_VERSION }}
+          tag_name: ${{ env.PACKAGE_VERSION }}
+          release_name: v${{ env.PACKAGE_VERSION }}
           body: ${{ steps.extract_release_notes.outputs.release_notes }}
           draft: false
           prerelease: false
