@@ -13,7 +13,7 @@ describe("AlsContext behaves correctly :-)", () => {
     context = new AlsContext<MyStore>();
   });
 
-  test("getStore returns undefined when accessed outside of a run function", () => {
+  test("getStore returns undefined when accessed outside of a run functionnn", () => {
     // Arrange
     // done in before each / after each
 
