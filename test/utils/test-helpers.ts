@@ -1,5 +1,5 @@
 /**
- * Simple helper to make an array from a lenght and a generator.
+ * Simple helper to make an array from a lenght and a generator (for example faker).
  *
  * @param length
  * @param generator
