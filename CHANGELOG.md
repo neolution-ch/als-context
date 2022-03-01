@@ -9,6 +9,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2022-03-01
 
-[Unreleased]: https://github.com/neolution-ch/als-context/compare/1.2.0...HEAD
-
+[unreleased]: https://github.com/neolution-ch/als-context/compare/1.2.0...HEAD
 [1.2.0]: https://github.com/neolution-ch/als-context/compare/ab1083f28a416b406ad9c4f5e2a3cbe7912522f4...1.2.0
