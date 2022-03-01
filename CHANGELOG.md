@@ -13,4 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2022-01-10
 ### Added
-- created package :yum: 
+- created package :tada: 
+
+[Unreleased]: https://github.com/neolution-ch/als-context/compare/HEAD...HEAD
+[1.0.0]: https://github.com/neolution-ch/als-context/compare/HEAD...HEAD
