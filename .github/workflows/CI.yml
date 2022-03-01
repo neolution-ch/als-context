@@ -1,4 +1,4 @@
-name: yarn CI
+name: CI
 
 on:
   workflow_dispatch:
