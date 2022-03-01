@@ -15,9 +15,9 @@ jobs:
       - name: Setup release information
         run: |
           echo "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g')" >> $GITHUB_ENV
-      # - name: Extract release notes
-      #   id: extract_release_notes
-      #   uses: ffurrer2/extract-release-notes@v1
+      - name: Extract release notes
+        id: extract_release_notes
+        uses: ffurrer2/extract-release-notes@v1
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -29,11 +29,3 @@ jobs:
           body: ${{ steps.extract_release_notes.outputs.release_notes }}
           draft: false
           prerelease: false
-      # - name: Slack notify
-      #   uses: rtCamp/action-slack-notify@main
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_OVER_APP }}
-      #     SLACK_CHANNEL: #over-app-android
-      #     SLACK_TITLE: 🚨 Version ${{ env.PACKAGE_VERSION }} is being published to Google Play Internal Test
-      #     SLACK_MESSAGE: ${{ steps.extract_release_notes.outputs.release_notes }}
-      #     MSG_MINIMAL: true
