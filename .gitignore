@@ -24,5 +24,6 @@ yarn-error.log*
 .eslintcache
 
 coverage
+new
 
 storybook-static
