@@ -6,14 +6,14 @@ interface MyStore {
   counter: number;
 }
 
-describe("AlsContext behaves correctly :-)", () => {
+describe("Given a fresh AlsContext", () => {
   let context = new AlsContext<MyStore>();
 
   afterEach(() => {
     context = new AlsContext<MyStore>();
   });
 
-  test("getStore returns undefined when accessed outside of a run functionnn", () => {
+  test("getStore returns undefined when accessed outside of a run function", () => {
     // Arrange
     // done in before each / after each
 
@@ -24,7 +24,7 @@ describe("AlsContext behaves correctly :-)", () => {
     expect(store).toBeUndefined();
   });
 
-  test("initial value is passed correctly", () => {
+  test("the initial value is passed correctly", () => {
     // Arrange
     const fakeNumber = faker.datatype.number();
 
@@ -46,7 +46,7 @@ describe("AlsContext behaves correctly :-)", () => {
     expect(counter).toBe(fakeNumber);
   });
 
-  test("getting the value with the same context name works", () => {
+  test("a context with the same name can access the store values", () => {
     // Arrange
     const fakeNumber = faker.datatype.number();
 
@@ -67,36 +67,7 @@ describe("AlsContext behaves correctly :-)", () => {
     expect(counter).toBe(fakeNumber);
   });
 
-  test("multiple context can have different values", () => {
-    // Arrange
-    const fakeNumbers = makeArray<number>(2, () => faker.datatype.number());
-    const context2 = new AlsContext<MyStore>(faker.datatype.string());
-
-    // Act
-    const counters: number[] = [];
-    context.run(
-      async () => {
-        counters.push(context.getStore()!.counter);
-
-        context2.run(
-          async () => {
-            counters.push(context2.getStore()!.counter);
-          },
-          {
-            counter: fakeNumbers[1],
-          },
-        );
-      },
-      {
-        counter: fakeNumbers[0],
-      },
-    );
-
-    // Assert
-    expect(counters).toEqual(fakeNumbers);
-  });
-
-  test("dsiabling a context works", () => {
+  test("dsiabling a context works (get store returns undefined)", () => {
     // Arrange
     const fakeNumbers = [faker.datatype.number(), undefined];
 
@@ -116,29 +87,64 @@ describe("AlsContext behaves correctly :-)", () => {
     // Assert
     expect(counters).toEqual(fakeNumbers);
   });
+});
 
-  test("multiple context run can keep track of their own values, although they reference the same AsyncLocalStorage behind the scenes", async () => {
+describe("Given multiple contexts", () => {
+  test("each context can keep track of its own values", () => {
     // Arrange
     const fakeNumbers = makeArray<number>(2, () => faker.datatype.number());
-    function worker(counter: number): Promise<number> {
-      return new Promise<number>((resolve) => {
-        context.run(
-          async () => {
-            setTimeout(() => {
-              resolve(context.getStore()!.counter);
-            }, faker.datatype.number({ min: 100, max: 500 }));
-          },
-          {
-            counter,
-          },
-        );
-      });
-    }
+    const context1 = new AlsContext<MyStore>(faker.datatype.string());
+    const context2 = new AlsContext<MyStore>(faker.datatype.string());
 
     // Act
-    const result = await Promise.all([worker(fakeNumbers[0]), worker(fakeNumbers[1])]);
+    const counters: number[] = [];
+    context1.run(
+      async () => {
+        counters.push(context1.getStore()!.counter);
+
+        context2.run(
+          async () => {
+            counters.push(context2.getStore()!.counter);
+          },
+          {
+            counter: fakeNumbers[1],
+          },
+        );
+      },
+      {
+        counter: fakeNumbers[0],
+      },
+    );
 
     // Assert
-    expect(result).toEqual(fakeNumbers);
+    expect(counters).toEqual(fakeNumbers);
+  });
+
+  describe("and both contexts use their own run method", () => {
+    test("each context can track of its own values although they reference the same AsyncLocalStorage behind the scenes", async () => {
+      // Arrange
+      const fakeNumbers = makeArray<number>(2, () => faker.datatype.number());
+      const context = new AlsContext<MyStore>(faker.datatype.string());
+      function worker(counter: number): Promise<number> {
+        return new Promise<number>((resolve) => {
+          context.run(
+            async () => {
+              setTimeout(() => {
+                resolve(context.getStore()!.counter);
+              }, faker.datatype.number({ min: 100, max: 500 }));
+            },
+            {
+              counter,
+            },
+          );
+        });
+      }
+
+      // Act
+      const result = await Promise.all([worker(fakeNumbers[0]), worker(fakeNumbers[1])]);
+
+      // Assert
+      expect(result).toEqual(fakeNumbers);
+    });
   });
 });
