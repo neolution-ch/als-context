@@ -14,15 +14,10 @@ jobs:
           git config user.email noreply@github.com
       - name: Setup release information
         run: |
-          PACKAGE_VERSION=$(cat package.json \
-            | grep version \
-            | head -1 \
-            | awk -F: '{ print $2 }' \
-            | sed 's/[",]//g')
-          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_ENV
-      - name: Extract release notes
-        id: extract_release_notes
-        uses: ffurrer2/extract-release-notes@v1
+          echo "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g')" >> $GITHUB_ENV
+      # - name: Extract release notes
+      #   id: extract_release_notes
+      #   uses: ffurrer2/extract-release-notes@v1
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
