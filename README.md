@@ -55,7 +55,7 @@ return alsContext.getStore()?.token;
 
 ## Caveats
 
-:warning: This package only works on the node.js environment not in the browser! So make sure you only require it in on the client side, for example like this:
+:warning: This package only works on the node.js environment not in the browser! So make sure you only require / import it in on the server side, for example like this:
 
 ```typescript
 if (typeof window === "undefined") {

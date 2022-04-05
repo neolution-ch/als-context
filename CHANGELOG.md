@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+-   Fixed readme
+-   Updated minimist to 1.2.6 because of security issues: https://github.com/neolution-ch/als-context/security/dependabot/2
+
 ## [3.1.1] - 2022-04-05
 
 -   Fixed CD pipeline action
