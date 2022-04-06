@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+-   Changed relase branch to create prs with normal commit
+
 ### Added
 
 -   Added license file
+
 
 ## [3.1.2] - 2022-04-05
 
