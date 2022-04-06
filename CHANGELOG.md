@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.3] - 2022-04-06
+
 ### Changed
 
 -   Changed relase branch to create prs with normal commit
@@ -14,7 +16,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 -   Added license file
-
 
 ## [3.1.2] - 2022-04-05
 
@@ -48,7 +49,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   created package :tada: 
 
-[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.1.2...HEAD
+[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.1.3...HEAD
+
+[3.1.3]: https://github.com/neolution-ch/als-context/compare/3.1.2...3.1.3
 
 [3.1.2]: https://github.com/neolution-ch/als-context/compare/3.1.1...3.1.2
 
