@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.2] - 2022-04-05
+
+### Changed
+
+-   Fixed readme
+-   Updated minimist to 1.2.6 because of security issues: <https://github.com/neolution-ch/als-context/security/dependabot/2>
+
 ## [3.1.1] - 2022-04-05
 
 -   Fixed CD pipeline action
@@ -32,7 +39,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   created package :tada: 
 
-[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.1.1...HEAD
+[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.1.2...HEAD
+
+[3.1.2]: https://github.com/neolution-ch/als-context/compare/3.1.1...3.1.2
 
 [3.1.1]: https://github.com/neolution-ch/als-context/compare/3.1.0...3.1.1
 
