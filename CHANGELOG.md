@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- added generic return value for `run` method
+
 ## [3.1.3] - 2022-04-06
 
 ### Changed
