@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.2.0] - 2023-07-25
+
+### Added
+
+-   added generic return value for `run` method
+
 ## [3.1.3] - 2022-04-06
 
 ### Changed
@@ -49,7 +55,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   created package :tada: 
 
-[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.1.3...HEAD
+[Unreleased]: https://github.com/neolution-ch/als-context/compare/3.2.0...HEAD
+
+[3.2.0]: https://github.com/neolution-ch/als-context/compare/3.1.3...3.2.0
 
 [3.1.3]: https://github.com/neolution-ch/als-context/compare/3.1.2...3.1.3
 

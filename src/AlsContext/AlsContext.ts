@@ -80,7 +80,7 @@ class AsyncLocalStorageContext<T> {
    * @param fn The function to run, the context will be available in all underlying calls
    * @param initialValue The initial values, optional
    */
-  async run(fn: () => Promise<void>, initialValue: T): Promise<void> {
+  async run<R>(fn: () => Promise<R>, initialValue: T) {
     return this.instance.run(initialValue, fn);
   }
 }
